@@ -1,3 +1,3 @@
 # Todo App
 
-A simple app built using gRPC, Python, and Golang.
+A simple todo app built using gRPC, Python, and Golang.
