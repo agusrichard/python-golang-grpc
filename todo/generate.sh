@@ -1,1 +1,0 @@
-protoc --go_out=plugins=grpc:todo todo.proto
