@@ -1,0 +1,10 @@
+{% import 'forms.html' as forms %}
+{% extends "layout.html" %}
+{% block title %}Register Account{% endblock title %}
+{% block content_title %}Register{% endblock content_title %}
+{% block content %}
+{{ forms.form() }}
+  {% if error %}
+    <p class="form-error">{{ error }}</p>
+  {% endif %}
+{% endblock content %}

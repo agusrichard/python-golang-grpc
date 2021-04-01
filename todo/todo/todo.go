@@ -36,13 +36,23 @@ func (s *Server) CreateTodo(ctx context.Context, request *CreateTodoRequest) (*C
 }
 
 func (s *Server) GetTodos(ctx context.Context, request *GetTodosRequest) (*GetTodosResponse, error) {
-	log.Println("Get todo")
+	log.Println("Get todos")
 	todos, err := s.todoUsecase.GetTodos(request.UserID)
 	if err != nil {
 		log.Println("Error create todo", err)
 		return &GetTodosResponse{Success: false, Message: fmt.Sprintf("%v", err)}, err
 	}
 	return &GetTodosResponse{Success: true, Message: "Success to get todos", Data: todos}, nil
+}
+
+func (s *Server) GetTodo(ctx context.Context, request *GetTodoRequest) (*GetTodoResponse, error) {
+	log.Println("Get todo")
+	todo, err := s.todoUsecase.GetTodo(request.ItemID, request.UserID)
+	if err != nil {
+		log.Println("Error create todo", err)
+		return &GetTodoResponse{Success: false, Message: fmt.Sprintf("%v", err)}, err
+	}
+	return &GetTodoResponse{Success: true, Message: "Success to get todos", Data: todo}, nil
 }
 
 func (s *Server) UpdateTodo(ctx context.Context, request *UpdateTodoRequest) (*UpdateTodoResponse, error) {

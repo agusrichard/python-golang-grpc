@@ -1,0 +1,17 @@
+{% import 'forms.html' as forms %}
+{% import 'macros.html' as macros %}
+{% extends "layout.html" %}
+{% block title %}Create Todo{% endblock title %}
+{% block content_title %}Create Todo{% endblock content_title %}
+{% block content %}
+<div>
+  <form action="{{ action }}" method="POST">
+    {{ macros.input('title', 'title', 'Title:') }}
+    {{ macros.textarea('description', 'description', 'Description:') }}
+    {{ macros.button('Submit') }}
+  </form>
+  {% if error %}
+    <p class="form-error">{{ error }}</p>
+  {% endif %}
+</div>
+{% endblock content %}

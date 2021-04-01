@@ -1,0 +1,162 @@
+html, body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =================== Content =================== */
+.content-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: salmon;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 500px;
+  height: 80vh;
+  background-color: white;
+  border-radius: 10px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.content-title {
+  border-bottom: 2px solid red;
+  padding-bottom: 8px;
+}
+
+/* =================== Form/Macros =================== */
+form {
+  padding: 20px;
+  width: 100%;
+}
+
+div.input {
+  margin: 20px auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+div > label {
+  padding-bottom: 5px;
+  font-size: 24px;
+}
+
+div > input {
+  padding: 10px 5px;
+  border-radius: 5px;
+  font-size: 22px;
+}
+
+div > textarea {
+  padding: 10px 5px;
+  border-radius: 5px;
+  font-size: 22px;
+}
+
+button.form-btn {
+  display: block;
+  border: none;
+  background-color: coral;
+  margin: 10px auto;
+  margin-top: 50px;
+  width: 200px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  transition: 0.2s;
+}
+
+button.form-btn:hover {
+  background-color: blueviolet;
+}
+
+.form-error {
+  text-align: center;
+  color: crimson;
+  font-size: 24px;
+}
+
+/* =================== Navbar =================== */
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  display: block;
+}
+
+nav ul li a {
+  text-decoration: none;
+  background-color: blueviolet;
+  color: white;
+  margin: 10px 20px;
+  padding: 5px 10px;
+  font-size: 24px;
+  border-radius: 5px;
+}
+
+
+/* =================== Todo =================== */
+a.item-todo {
+  text-decoration: none;
+  color: black;
+  min-width: 250px;
+}
+
+a.item-todo > div {
+  background-color: #999;
+  color: white;
+  padding: 5px 10px;
+  margin: 10px 10px;
+  border-radius: 10px;
+}
+
+.item-todo h3 {
+  text-align: center;
+}
+
+.item-todo p {
+  text-align: center;
+}
+
+.todo-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+a.goback-btn {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  background-color: blueviolet;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+a.delete-btn {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  background-color: crimson;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.detail-bottom {
+  display: flex;
+  justify-content: space-between;
+}

@@ -23,6 +23,17 @@ message GetTodosResponse {
     string data = 3;
 }
 
+message GetTodoRequest {
+    int64 itemID = 1;
+    int64 userID = 2;
+}
+
+message GetTodoResponse {
+    bool success = 1;
+    string message = 2;
+    string data = 3;
+}
+
 message UpdateTodoRequest {
     int64 id = 1;
     string title = 2;
@@ -46,6 +57,7 @@ message DeleteTodoResponse {
 service TodoService {
     rpc CreateTodo(CreateTodoRequest) returns (CreateTodoResponse) {}
     rpc GetTodos(GetTodosRequest) returns (GetTodosResponse) {}
+    rpc GetTodo(GetTodoRequest) returns (GetTodoResponse) {}
     rpc UpdateTodo(UpdateTodoRequest) returns (UpdateTodoResponse) {}
     rpc DeleteTodo(DeleteTodoRequest) returns (DeleteTodoResponse) {}
 }
