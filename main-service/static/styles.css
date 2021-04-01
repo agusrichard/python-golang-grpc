@@ -11,6 +11,7 @@ html, body {
   width: 100%;
   background-color: salmon;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -56,6 +57,12 @@ div > input {
   font-size: 22px;
 }
 
+div > textarea {
+  padding: 10px 5px;
+  border-radius: 5px;
+  font-size: 22px;
+}
+
 button.form-btn {
   display: block;
   border: none;
@@ -73,4 +80,58 @@ button.form-btn {
 
 button.form-btn:hover {
   background-color: blueviolet;
+}
+
+.form-error {
+  text-align: center;
+  color: crimson;
+  font-size: 24px;
+}
+
+/* =================== Navbar =================== */
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  display: block;
+}
+
+nav ul li a {
+  text-decoration: none;
+  background-color: blueviolet;
+  color: white;
+  margin: 10px 20px;
+  padding: 5px 10px;
+  font-size: 24px;
+  border-radius: 5px;
+}
+
+
+/* =================== Todo =================== */
+a.item-todo {
+  text-decoration: none;
+  color: black;
+}
+
+a.item-todo > div {
+  background-color: #999;
+  color: white;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.item-todo h3 {
+  text-align: center;
+}
+
+.item-todo p {
+  text-align: center;
+}
+
+.todo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }

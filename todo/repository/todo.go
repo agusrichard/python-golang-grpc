@@ -15,6 +15,7 @@ type todoRepository struct {
 type TodoRepository interface {
 	CreateTodo(todo models.Todo) (bool, error)
 	GetTodos(userID int64) ([]models.Todo, error)
+	GetTodo(itemID, userID int64) (models.Todo, error)
 	UpdateTodo(todo models.Todo) (bool, error)
 	DeleteTodo(id int64) (bool, error)
 }
@@ -96,6 +97,21 @@ func (todoRepository *todoRepository) GetTodos(userID int64) ([]models.Todo, err
 	}
 
 	return todos, nil
+}
+
+func (todoRepository *todoRepository) GetTodo(itemID, userID int64) (models.Todo, error) {
+	var todo models.Todo
+	row := todoRepository.db.QueryRow(`
+		SELECT id, title, description FROM todos WHERE user_id=$1 AND id=$2;
+	`, userID, itemID)
+
+	err := row.Scan(&(todo.ID), &(todo.Title), &(todo.Description))
+	if err != nil {
+		log.Println("Error get todo", err)
+		return models.Todo{}, err
+	}
+
+	return todo, nil
 }
 
 func (todoRepository *todoRepository) UpdateTodo(todo models.Todo) (bool, error) {

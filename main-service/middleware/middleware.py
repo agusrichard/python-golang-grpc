@@ -1,6 +1,6 @@
 import json
 import functools
-from flask import request, g, Response, jsonify
+from flask import request, Response, jsonify, session, redirect, url_for
 from auth.auth import AuthClient
 
 
@@ -9,13 +9,13 @@ def token_required(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         try:
-            token = request.headers.get('token')
+            token = session.get('token') or ''
             auth_client = AuthClient()
             result = auth_client.validate_token(token=token)
-            g.user_data = json.loads(result.message)
+            session['user_data'] = json.loads(result.message)
             return func(*args, **kwargs)
-        except:
-            res = jsonify({'success': False, 'message': 'Invalid token'})
-            return res
+        except Exception as error:
+            print('error', error)
+            return redirect(url_for('auth_blueprint.login'))
 
     return wrapper

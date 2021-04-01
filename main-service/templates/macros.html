@@ -5,7 +5,22 @@
   </div>
 {%- endmacro %}
 
+{% macro textarea(name, id, label, value='') -%}
+  <div class="input">
+    <label for="{{ id }}">{{ label }}</label>
+    <textarea id="{{ id }}" name="{{ name }}" >{{ value }}</textarea>
+  </div>
+{%- endmacro %}
 
 {% macro button(title) -%}
   <button class="form-btn">{{ title }}</button>
+{%- endmacro %}
+
+{% macro todo_item(href, title, description) -%}
+  <a href="{{ href }}" class="item-todo">
+    <div>
+      <h3>{{ title }}</h3>
+      <p>{{ description }}</p>
+    </div>
+  </a>
 {%- endmacro %}

@@ -1,0 +1,23 @@
+{% import 'forms.html' as forms %}
+{% import 'macros.html' as macros %}
+{% extends "layout.html" %}
+{% block title %}Todos List{% endblock title %}
+{% block content_title %}Todos List{% endblock content_title %}
+{% block content %}
+<div class="todo-list">
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+</div>
+{% endblock content %}

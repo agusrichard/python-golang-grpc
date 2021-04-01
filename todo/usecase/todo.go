@@ -14,6 +14,7 @@ type todoUsecase struct {
 type TodoUsecase interface {
 	CreateTodo(todo models.Todo) (bool, error)
 	GetTodos(userID int64) (string, error)
+	GetTodo(userID, itemID int64) (string, error)
 	UpdateTodo(todo models.Todo) (bool, error)
 	DeleteTodo(id int64) (bool, error)
 }
@@ -42,6 +43,18 @@ func (todoUsecase *todoUsecase) GetTodos(userID int64) (string, error) {
 	}
 
 	result, err := json.Marshal(todos)
+
+	return string(result), nil
+}
+
+func (todoUsecase *todoUsecase) GetTodo(itemID, userID int64) (string, error) {
+	todo, err := todoUsecase.todoRepository.GetTodo(itemID, userID)
+	if err != nil {
+		log.Println("Error get todos", err)
+		return "", err
+	}
+
+	result, err := json.Marshal(todo)
 
 	return string(result), nil
 }
