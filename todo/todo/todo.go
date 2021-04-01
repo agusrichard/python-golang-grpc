@@ -3,18 +3,20 @@ package todo
 import (
 	context "context"
 	"fmt"
-	"grpc-todo/models"
-	"grpc-todo/usecase"
 	"log"
+	"todo/models"
+	"todo/usecase"
 )
 
 type Server struct {
 	todoUsecase usecase.TodoUsecase
+	UnimplementedTodoServiceServer
 }
 
 func InitServer(todoUsecase usecase.TodoUsecase) Server {
 	return Server{
 		todoUsecase,
+		UnimplementedTodoServiceServer{},
 	}
 }
 

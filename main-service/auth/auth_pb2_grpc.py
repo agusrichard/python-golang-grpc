@@ -2,11 +2,12 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import auth_pb2 as auth__pb2
+from auth import auth_pb2 as auth__pb2
 
 
 class AuthServiceStub(object):
     """Missing associated documentation comment in .proto file."""
+
     def __init__(self, channel):
         """Constructor.
 
@@ -14,25 +15,25 @@ class AuthServiceStub(object):
             channel: A grpc.Channel.
         """
         self.Register = channel.unary_unary(
-            '/auth.AuthService/Register',
-            request_serializer=auth__pb2.RegisterRequest.SerializeToString,
-            response_deserializer=auth__pb2.RegisterResponse.FromString,
-        )
+                '/auth.AuthService/Register',
+                request_serializer=auth__pb2.RegisterRequest.SerializeToString,
+                response_deserializer=auth__pb2.RegisterResponse.FromString,
+                )
         self.Login = channel.unary_unary(
-            '/auth.AuthService/Login',
-            request_serializer=auth__pb2.LoginRequest.SerializeToString,
-            response_deserializer=auth__pb2.LoginResponse.FromString,
-        )
+                '/auth.AuthService/Login',
+                request_serializer=auth__pb2.LoginRequest.SerializeToString,
+                response_deserializer=auth__pb2.LoginResponse.FromString,
+                )
         self.ValidateToken = channel.unary_unary(
-            '/auth.AuthService/ValidateToken',
-            request_serializer=auth__pb2.ValidateTokenRequest.
-            SerializeToString,
-            response_deserializer=auth__pb2.ValidateTokenResponse.FromString,
-        )
+                '/auth.AuthService/ValidateToken',
+                request_serializer=auth__pb2.ValidateTokenRequest.SerializeToString,
+                response_deserializer=auth__pb2.ValidateTokenResponse.FromString,
+                )
 
 
 class AuthServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
+
     def Register(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -54,84 +55,78 @@ class AuthServiceServicer(object):
 
 def add_AuthServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        'Register':
-        grpc.unary_unary_rpc_method_handler(
-            servicer.Register,
-            request_deserializer=auth__pb2.RegisterRequest.FromString,
-            response_serializer=auth__pb2.RegisterResponse.SerializeToString,
-        ),
-        'Login':
-        grpc.unary_unary_rpc_method_handler(
-            servicer.Login,
-            request_deserializer=auth__pb2.LoginRequest.FromString,
-            response_serializer=auth__pb2.LoginResponse.SerializeToString,
-        ),
-        'ValidateToken':
-        grpc.unary_unary_rpc_method_handler(
-            servicer.ValidateToken,
-            request_deserializer=auth__pb2.ValidateTokenRequest.FromString,
-            response_serializer=auth__pb2.ValidateTokenResponse.
-            SerializeToString,
-        ),
+            'Register': grpc.unary_unary_rpc_method_handler(
+                    servicer.Register,
+                    request_deserializer=auth__pb2.RegisterRequest.FromString,
+                    response_serializer=auth__pb2.RegisterResponse.SerializeToString,
+            ),
+            'Login': grpc.unary_unary_rpc_method_handler(
+                    servicer.Login,
+                    request_deserializer=auth__pb2.LoginRequest.FromString,
+                    response_serializer=auth__pb2.LoginResponse.SerializeToString,
+            ),
+            'ValidateToken': grpc.unary_unary_rpc_method_handler(
+                    servicer.ValidateToken,
+                    request_deserializer=auth__pb2.ValidateTokenRequest.FromString,
+                    response_serializer=auth__pb2.ValidateTokenResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        'auth.AuthService', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler, ))
+            'auth.AuthService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
 
 
-# This class is part of an EXPERIMENTAL API.
+ # This class is part of an EXPERIMENTAL API.
 class AuthService(object):
     """Missing associated documentation comment in .proto file."""
+
     @staticmethod
     def Register(request,
-                 target,
-                 options=(),
-                 channel_credentials=None,
-                 call_credentials=None,
-                 insecure=False,
-                 compression=None,
-                 wait_for_ready=None,
-                 timeout=None,
-                 metadata=None):
-        return grpc.experimental.unary_unary(
-            request, target, '/auth.AuthService/Register',
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/auth.AuthService/Register',
             auth__pb2.RegisterRequest.SerializeToString,
-            auth__pb2.RegisterResponse.FromString, options,
-            channel_credentials, insecure, call_credentials, compression,
-            wait_for_ready, timeout, metadata)
+            auth__pb2.RegisterResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Login(request,
-              target,
-              options=(),
-              channel_credentials=None,
-              call_credentials=None,
-              insecure=False,
-              compression=None,
-              wait_for_ready=None,
-              timeout=None,
-              metadata=None):
-        return grpc.experimental.unary_unary(
-            request, target, '/auth.AuthService/Login',
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/auth.AuthService/Login',
             auth__pb2.LoginRequest.SerializeToString,
-            auth__pb2.LoginResponse.FromString, options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout,
-            metadata)
+            auth__pb2.LoginResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def ValidateToken(request,
-                      target,
-                      options=(),
-                      channel_credentials=None,
-                      call_credentials=None,
-                      insecure=False,
-                      compression=None,
-                      wait_for_ready=None,
-                      timeout=None,
-                      metadata=None):
-        return grpc.experimental.unary_unary(
-            request, target, '/auth.AuthService/ValidateToken',
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/auth.AuthService/ValidateToken',
             auth__pb2.ValidateTokenRequest.SerializeToString,
-            auth__pb2.ValidateTokenResponse.FromString, options,
-            channel_credentials, insecure, call_credentials, compression,
-            wait_for_ready, timeout, metadata)
+            auth__pb2.ValidateTokenResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

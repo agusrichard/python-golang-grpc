@@ -2,8 +2,8 @@ package repository
 
 import (
 	"database/sql"
-	"grpc-todo/models"
 	"log"
+	"todo/models"
 
 	"github.com/jmoiron/sqlx"
 )

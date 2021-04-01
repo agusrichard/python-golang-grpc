@@ -1,5 +1,6 @@
 import grpc
-from . import todo_pb2 as pb2, todo_pb2_grpc as pb2_grpc
+from todo import todo_pb2 as pb2
+from todo import todo_pb2_grpc as pb2_grpc
 
 
 class TodoClient:

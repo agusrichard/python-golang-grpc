@@ -1,8 +1,8 @@
 package utils
 
 import (
+	"auth/models"
 	"fmt"
-	"grpc-auth/models"
 	"log"
 	"strconv"
 	"time"

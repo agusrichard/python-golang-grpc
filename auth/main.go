@@ -5,10 +5,10 @@ import (
 	"log"
 	"net"
 
-	"grpc-auth/auth"
-	"grpc-auth/config"
-	"grpc-auth/repository"
-	"grpc-auth/usecase"
+	"auth/auth"
+	"auth/config"
+	"auth/repository"
+	"auth/usecase"
 
 	"google.golang.org/grpc"
 )
@@ -26,11 +26,11 @@ func main() {
 
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 	if err != nil {
-		log.Println("failed to listen: %v", err)
+		log.Printf("failed to listen: %v\n", err)
 	}
 	fmt.Println("Listen to port 9000")
 
 	if err := grpcServer.Serve(lis); err != nil {
-		log.Println("failed to serve: %s", err)
+		log.Printf("failed to serve: %s\n", err)
 	}
 }

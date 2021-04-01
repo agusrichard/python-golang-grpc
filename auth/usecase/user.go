@@ -1,11 +1,11 @@
 package usecase
 
 import (
+	"auth/models"
+	"auth/repository"
+	"auth/utils"
 	"encoding/json"
 	"errors"
-	"grpc-auth/models"
-	"grpc-auth/repository"
-	"grpc-auth/utils"
 	"log"
 )
 

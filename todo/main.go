@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"grpc-todo/config"
-	"grpc-todo/repository"
-	"grpc-todo/todo"
-	"grpc-todo/usecase"
 	"log"
 	"net"
+	"todo/config"
+	"todo/repository"
+	"todo/todo"
+	"todo/usecase"
 
 	"google.golang.org/grpc"
 )
@@ -25,11 +25,11 @@ func main() {
 
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 3000))
 	if err != nil {
-		log.Println("failed to listen: %v", err)
+		log.Println("failed to listen: ", err)
 	}
 	fmt.Println("Listen to port 3000")
 
 	if err := grpcServer.Serve(lis); err != nil {
-		log.Println("failed to serve: %s", err)
+		log.Println("failed to serve: ", err)
 	}
 }

@@ -1,8 +1,8 @@
 package repository
 
 import (
+	"auth/models"
 	"database/sql"
-	"grpc-auth/models"
 	"log"
 
 	"github.com/jmoiron/sqlx"

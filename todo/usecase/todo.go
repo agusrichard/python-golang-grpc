@@ -2,9 +2,9 @@ package usecase
 
 import (
 	"encoding/json"
-	"grpc-todo/models"
-	"grpc-todo/repository"
 	"log"
+	"todo/models"
+	"todo/repository"
 )
 
 type todoUsecase struct {

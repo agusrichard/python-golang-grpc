@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"grpc-auth/usecase"
+	"auth/usecase"
 	"log"
 
 	"golang.org/x/net/context"
@@ -9,11 +9,13 @@ import (
 
 type Server struct {
 	userUsecase usecase.UserUsecase
+	UnimplementedAuthServiceServer
 }
 
 func InitServer(userUsecase usecase.UserUsecase) Server {
 	return Server{
 		userUsecase,
+		UnimplementedAuthServiceServer{},
 	}
 }
 
