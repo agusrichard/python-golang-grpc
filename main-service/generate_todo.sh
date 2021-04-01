@@ -1,0 +1,1 @@
+python -m grpc_tools.protoc -I. --python_out=./todo --grpc_python_out=./todo ./todo.proto
