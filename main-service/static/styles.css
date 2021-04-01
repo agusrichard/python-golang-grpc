@@ -1,0 +1,76 @@
+html, body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =================== Content =================== */
+.content-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: salmon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 500px;
+  height: 80vh;
+  background-color: white;
+  border-radius: 10px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.content-title {
+  border-bottom: 2px solid red;
+  padding-bottom: 8px;
+}
+
+/* =================== Form/Macros =================== */
+form {
+  padding: 20px;
+  width: 100%;
+}
+
+div.input {
+  margin: 20px auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+div > label {
+  padding-bottom: 5px;
+  font-size: 24px;
+}
+
+div > input {
+  padding: 10px 5px;
+  border-radius: 5px;
+  font-size: 22px;
+}
+
+button.form-btn {
+  display: block;
+  border: none;
+  background-color: coral;
+  margin: 10px auto;
+  margin-top: 50px;
+  width: 200px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  transition: 0.2s;
+}
+
+button.form-btn:hover {
+  background-color: blueviolet;
+}

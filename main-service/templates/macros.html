@@ -1,0 +1,11 @@
+{% macro input(name, id, label, value='', type='text') -%}
+  <div class="input">
+    <label for="{{ id }}">{{ label }}</label>
+    <input type="{{ type }}" value="{{ value|e }}" name="{{ name }}">
+  </div>
+{%- endmacro %}
+
+
+{% macro button(title) -%}
+  <button class="form-btn">{{ title }}</button>
+{%- endmacro %}

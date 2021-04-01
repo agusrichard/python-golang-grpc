@@ -1,0 +1,9 @@
+{% import 'macros.html' as macros %}
+
+{% macro form(action) -%}
+  <form action="{{ action }}" method="POST">
+    {{ macros.input('username', 'username', 'Username:') }}
+    {{ macros.input('password', 'password', 'Password:', type='password') }}
+    {{ macros.button('Submit') }}
+  </form>
+{%- endmacro %}

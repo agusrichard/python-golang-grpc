@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 
 from auth.client import AuthClient
 
@@ -23,3 +23,8 @@ def login():
         'message': result.message,
         'token': result.token
     })
+
+@auth_blueprint.route('/hello', methods=['GET', 'POST'])
+def hello():
+    print('here')
+    return render_template('auth/register.html')
