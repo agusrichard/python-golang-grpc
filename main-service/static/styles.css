@@ -112,13 +112,14 @@ nav ul li a {
 a.item-todo {
   text-decoration: none;
   color: black;
+  min-width: 250px;
 }
 
 a.item-todo > div {
   background-color: #999;
   color: white;
   padding: 5px 10px;
-  margin: 10px 0;
+  margin: 10px 10px;
   border-radius: 10px;
 }
 
@@ -133,5 +134,29 @@ a.item-todo > div {
 .todo-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+}
+
+a.goback-btn {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  background-color: blueviolet;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+a.delete-btn {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  background-color: crimson;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.detail-bottom {
+  display: flex;
+  justify-content: space-between;
 }

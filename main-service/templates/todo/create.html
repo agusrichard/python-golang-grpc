@@ -10,5 +10,8 @@
     {{ macros.textarea('description', 'description', 'Description:') }}
     {{ macros.button('Submit') }}
   </form>
+  {% if error %}
+    <p class="form-error">{{ error }}</p>
+  {% endif %}
 </div>
 {% endblock content %}

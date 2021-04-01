@@ -5,10 +5,17 @@
 {% block content_title %}Detail Todo{% endblock content_title %}
 {% block content %}
 <div>
-  <form action="{{ action }}" method="POST">
-    {{ macros.input('title', 'title', 'Title:') }}
-    {{ macros.textarea('description', 'description', 'Description:') }}
+  <form action="{{ url_for('todo_blueprint.update_todo', todo_id=todo.id) }}" method="POST">
+    {{ macros.input('title', 'title-', 'Title:', value=todo.title) }}
+    {{ macros.textarea('description', 'description-', 'Description:', value=todo.description) }}
     {{ macros.button('Submit') }}
   </form>
+  <div class="detail-bottom">
+    <a href="{{ url_for('todo_blueprint.get_todos') }}" class="goback-btn">Go back</a>
+    <a href="{{ url_for('todo_blueprint.delete_todo', todo_id=todo.id) }}" class="delete-btn">Delete</a>
+  </div>
+  {% if error %}
+    <p class="form-error">{{ error }}</p>
+  {% endif %}
 </div>
 {% endblock content %}

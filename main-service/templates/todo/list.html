@@ -5,19 +5,12 @@
 {% block content_title %}Todos List{% endblock content_title %}
 {% block content %}
 <div class="todo-list">
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
-  {{  macros.todo_item('', 'Play drum', 'Practicing Double Stroke')}}
+  {% if todos %}
+    {% for todo in todos -%}
+      {{  macros.todo_item(url_for('todo_blueprint.get_todo', todo_id=todo.id), todo.title, todo.description)}}
+    {%- endfor %}
+  {% else %}
+    <p>No todos</p>
+  {% endif %}
 </div>
 {% endblock content %}

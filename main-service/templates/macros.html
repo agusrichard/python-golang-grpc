@@ -8,7 +8,7 @@
 {% macro textarea(name, id, label, value='') -%}
   <div class="input">
     <label for="{{ id }}">{{ label }}</label>
-    <textarea id="{{ id }}" name="{{ name }}" >{{ value }}</textarea>
+    <textarea id="{{ id }}" name="{{ name }}" rows="8">{{ value }}</textarea>
   </div>
 {%- endmacro %}
 

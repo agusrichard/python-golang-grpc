@@ -15,10 +15,14 @@
     </div>
     <nav>
       <ul>
-        <li><a href="{{ url_for('auth_blueprint.login') }}">Login</a></li>
-        <li><a href="{{ url_for('auth_blueprint.register') }}">Register</a></li>
-        <li><a href="{{ url_for('todo_blueprint.get_todos') }}">Todos</a></li>
-        <li><a href="{{ url_for('todo_blueprint.create_todo') }}">Create</a></li>
+        {% if session['token'] %}
+          <li><a href="{{ url_for('todo_blueprint.get_todos') }}">Todos</a></li>
+          <li><a href="{{ url_for('todo_blueprint.create_todo') }}">Create</a></li>
+          <li><a href="{{ url_for('auth_blueprint.logout') }}">Logout</a></li>
+        {% else %}
+          <li><a href="{{ url_for('auth_blueprint.login') }}">Login</a></li>
+          <li><a href="{{ url_for('auth_blueprint.register') }}">Register</a></li>
+        {% endif %}
       </ul>
     </nav>
   </div>

@@ -30,7 +30,13 @@ def login():
             result = auth_client.login(username=request.form['username'],
                                        password=request.form['password'])
             session['token'] = result.token
-            return redirect(url_for('todo_blueprint.create_todo'))
+            return redirect(url_for('todo_blueprint.get_todos'))
         except Exception as error:
             return render_template('auth/login.html', error=str(error))
     return render_template('auth/login.html')
+
+
+@auth_blueprint.route('/logout', methods=['GET'])
+def logout():
+    session.clear()
+    return redirect(url_for('auth_blueprint.login'))
