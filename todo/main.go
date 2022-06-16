@@ -23,11 +23,11 @@ func main() {
 
 	todo.RegisterTodoServiceServer(grpcServer, &s)
 
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 3000))
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 7000))
 	if err != nil {
 		log.Println("failed to listen: ", err)
 	}
-	fmt.Println("Listen to port 3000")
+	fmt.Println("Listen to port 7000")
 
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Println("failed to serve: ", err)

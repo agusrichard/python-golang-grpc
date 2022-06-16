@@ -5,7 +5,7 @@ from auth import auth_pb2_grpc as pb2_grpc
 
 class AuthClient:
     def __init__(self):
-        self.host = 'localhost'
+        self.host = 'auth-service'
         self.server_port = 9000
 
         self.channel = grpc.insecure_channel(f'{self.host}:{self.server_port}')

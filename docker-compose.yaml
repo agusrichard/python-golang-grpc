@@ -15,7 +15,7 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - db-volume:/var/lib/postgresql/data
-  main:
+  main-service:
     build:
       context: ./main-service
       dockerfile: Dockerfile
@@ -30,25 +30,44 @@ services:
       - ./main-service:/app
     links:
       - db
-  # auth-service:
-  #   build:
-  #     args:
-  #       - USER_ID=1000
-  #       - GROUP_ID=1000
-  #       - USERNAME=richard
-  #     context: ./auth
-  #     dockerfile: Dockerfile
-  #   container_name: auth_service
-  #   env_file:
-  #     - ".env"
-  #   ports:
-  #     - "9000:9000"
-  #   depends_on:
-  #     - db
-  #   volumes:
-  #     - ./auth:/app
-  #   links:
-  #     - db
+  auth-service:
+    build:
+      args:
+        - USER_ID=1000
+        - GROUP_ID=1000
+        - USERNAME=richard
+      context: ./auth
+      dockerfile: Dockerfile
+    container_name: auth_service
+    env_file:
+      - ".env"
+    ports:
+      - "9000:9000"
+    depends_on:
+      - db
+    volumes:
+      - ./auth:/app
+    links:
+      - db
+  todo-service:
+    build:
+      args:
+        - USER_ID=1000
+        - GROUP_ID=1000
+        - USERNAME=richard
+      context: ./todo
+      dockerfile: Dockerfile
+    container_name: todo_service
+    env_file:
+      - ".env"
+    ports:
+      - "7000:7000"
+    depends_on:
+      - db
+    volumes:
+      - ./todo:/app
+    links:
+      - db
 volumes:
   db-volume:
     driver: local

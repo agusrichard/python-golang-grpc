@@ -21,11 +21,11 @@ func getDBConnection() *sqlx.DB {
 
 	dbConnectionStr = fmt.Sprintf(
 		"host=%s port=%d dbname=%s user=%s password=%s sslmode=disable",
-		"localhost",
+		"db",
 		5432,
-		"grpc_auth",
-		"postgres",
-		"postgres",
+		"db",
+		"admin",
+		"admin",
 	)
 
 	db, err := sqlx.Open("postgres", dbConnectionStr)
