@@ -12,6 +12,3 @@ app.register_blueprint(todo_blueprint, url_prefix='/todo')
 @app.route('/', methods=['GET'])
 def root_route():
     return render_template('home.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
