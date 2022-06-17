@@ -17,7 +17,7 @@ services:
       - db-volume:/var/lib/postgresql/data
   main-service:
     build:
-      context: ./main-service
+      context: ./main
       dockerfile: Dockerfile
     container_name: main_service
     env_file:
@@ -54,6 +54,8 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_PORT=${POSTGRES_PORT}
       - POSTGRES_HOST=${POSTGRES_HOST}
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
     ports:
       - "9000:9000"
     depends_on:
@@ -87,6 +89,33 @@ services:
       - ./todo:/app
     links:
       - db
+  auth-proxy:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.envoy_auth
+    ports:
+      - "1000:1000"
+  todo-proxy:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.envoy_todo
+    ports:
+      - "2000:2000"
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth-proxy
+      - todo-proxy
+      - auth-service
+      - todo-service
+    tty: true
+    volumes:
+      - /app/node_modules
+      - ./web:/app
 volumes:
   db-volume:
     driver: local
