@@ -22,6 +22,9 @@ services:
     container_name: main_service
     env_file:
       - ".env"
+    environment:
+      - TODO_SERVICE_HOST=${TODO_SERVICE_HOST}
+      - AUTH_SERVICE_HOST=${AUTH_SERVICE_HOST}
     ports:
       - "5000:5000"
     depends_on:
@@ -41,6 +44,12 @@ services:
     container_name: auth_service
     env_file:
       - ".env"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_HOST=${POSTGRES_HOST}
     ports:
       - "9000:9000"
     depends_on:
@@ -60,6 +69,12 @@ services:
     container_name: todo_service
     env_file:
       - ".env"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_HOST=${POSTGRES_HOST}
     ports:
       - "7000:7000"
     depends_on:
