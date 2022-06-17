@@ -24,7 +24,11 @@ services:
       - ".env"
     environment:
       - TODO_SERVICE_HOST=${TODO_SERVICE_HOST}
+      - TODO_SERVICE_PORT=${TODO_SERVICE_PORT}
       - AUTH_SERVICE_HOST=${AUTH_SERVICE_HOST}
+      - AUTH_SERVICE_PORT=${AUTH_SERVICE_PORT}
+      # - FLASK_ENV=development
+      # - FLASK_APP=app.py
     ports:
       - "5000:5000"
     depends_on:

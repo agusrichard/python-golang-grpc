@@ -7,7 +7,7 @@ from todo import todo_pb2_grpc as pb2_grpc
 class TodoClient:
     def __init__(self):
         self.host = os.environ.get("TODO_SERVICE_HOST", "localhost")
-        self.server_port = 7000
+        self.server_port = int(os.environ.get("TODO_SERVICE_PORT", "7000"))
 
         self.channel = grpc.insecure_channel(f"{self.host}:{self.server_port}")
         self.stub = pb2_grpc.TodoServiceStub(self.channel)

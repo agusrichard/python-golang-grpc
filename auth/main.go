@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
+	"strconv"
 
 	"auth/auth"
 	"auth/config"
@@ -23,12 +25,13 @@ func main() {
 	grpcServer := grpc.NewServer()
 
 	auth.RegisterAuthServiceServer(grpcServer, &s)
+	serverPort, _ := strconv.Atoi(os.Getenv("AUTH_SERVICE_PORT"))
 
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", serverPort))
 	if err != nil {
 		log.Printf("failed to listen: %v\n", err)
 	}
-	fmt.Println("Listen to port 9000")
+	fmt.Println(fmt.Sprintf("Listen to port %v", serverPort))
 
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Printf("failed to serve: %s\n", err)
