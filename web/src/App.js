@@ -1,23 +1,35 @@
+import './App.css'
 import { useState } from 'react'
 
-import './App.css'
-import authClient from './api/auth'
+import TodoComponent from './pages/Todo'
+import AuthComponent from './pages/Auth'
+import { Button } from '@mui/material'
 
 function App() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [userId, setUserId] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const handleSubmit = () => {
-    authClient.register(username, password)
+  const handleLogin = (id) => {
+    setIsLoggedIn(true)
+    setUserId(id)
   }
+
+  const handleLogout = () => {
+    setIsLoggedIn(false)
+    setUserId('')
+  }
+
+  console.log('userId', userId)
 
   return (
     <div className="App">
-      <h1>Hello World</h1>
-      <div>
-        <input type="text" placeholder="username" onChange={e => setUsername(e.target.value)} />
-        <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
-        <button onClick={handleSubmit}>Register</button>
+      <div className="container">
+        {
+          isLoggedIn ? <TodoComponent userId={userId} /> : <AuthComponent handleLogin={handleLogin} />
+        }
+        {isLoggedIn && <div className='button-logout'>
+          <Button variant='contained' onClick={handleLogout}>Logout</Button>
+        </div>}
       </div>
     </div>
   )

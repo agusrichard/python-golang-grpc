@@ -17,6 +17,8 @@ RUN npm install
 COPY --chown=node:node . .
 USER node
 
+RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+
 # build app for production with minification
 # RUN npm run build
 
