@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+  background-color: coral;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+}
+
+.container {
+  width: 500px;
+  height: 750px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-todo {
+  margin: 10px;
+}
+
+.todos-list {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.bottom-auth-form {
+  border-top: 2px solid #ccc;
+  padding-top: 10px;
+  margin-top: 100px;
+}
+
+.button-logout {
+  margin-top: 30px;
+}
+
+.MuiCard-root {
+  margin: 10px 0;
+}
+
+.MuiCardActions-root {
+  display: flex;
+  justify-content: center;
+}

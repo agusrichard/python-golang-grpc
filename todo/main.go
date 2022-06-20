@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
+	"strconv"
 	"todo/config"
 	"todo/repository"
 	"todo/todo"
@@ -23,11 +25,12 @@ func main() {
 
 	todo.RegisterTodoServiceServer(grpcServer, &s)
 
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 3000))
+	serverPort, _ := strconv.Atoi(os.Getenv("TODO_SERVICE_PORT"))
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", serverPort))
 	if err != nil {
 		log.Println("failed to listen: ", err)
 	}
-	fmt.Println("Listen to port 3000")
+	fmt.Println(fmt.Sprintf("Listen to port %v", serverPort))
 
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Println("failed to serve: ", err)

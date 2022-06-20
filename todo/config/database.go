@@ -2,6 +2,8 @@ package config
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
@@ -18,14 +20,15 @@ func ConnectDB() *sqlx.DB {
 
 func getDBConnection() *sqlx.DB {
 	var dbConnectionStr string
+	port, _ := strconv.Atoi(os.Getenv("POSTGRES_PORT"))
 
 	dbConnectionStr = fmt.Sprintf(
 		"host=%s port=%d dbname=%s user=%s password=%s sslmode=disable",
-		"localhost",
-		5432,
-		"grpc_todo",
-		"postgres",
-		"postgres",
+		os.Getenv("POSTGRES_HOST"),
+		port,
+		os.Getenv("POSTGRES_DB"),
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASSWORD"),
 	)
 
 	db, err := sqlx.Open("postgres", dbConnectionStr)
